@@ -9,7 +9,7 @@
         <div class="col-md-8">
             <h1>{{ $movie->title }}</h1>
             <p>{{ $movie->description }}</p>
-            <a href="https://www.themoviedb.org/movie/{{ $movie->id }}" class="btn btn-primary" target="_blank">View on TMDB</a>
+            <a href="https://www.themoviedb.org/movie/{{ $movie->mid }}" class="btn btn-primary" target="_blank">View on TMDB</a>
         </div>
     </div>
 </div>
