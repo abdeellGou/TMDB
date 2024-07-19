@@ -7,14 +7,18 @@ use Livewire\Component;
 
 class Movies extends Component
 {
-    public $movies, $movie_id, $mid, $title, $description, $release_date, $isOpen = 0;
+    public $movie_id, $mid, $title, $description, $release_date, $isOpen = 0;
     public $search = '';
 
     public function render()
     {
-        // $this->movies = Movie::where('title', 'like', '%' . $this->search . '%')->paginate(10);
-        $this->movies = Movie::where('title', 'like', '%' . $this->search . '%')->get();
-        return view('livewire.movies');
+        $movies = [];
+        if (!$this->search) {
+            $movies = Movie::simplePaginate(15);
+        } else {
+            $movies = Movie::where('title', 'like', '%' . $this->search . '%')->simplePaginate(15);
+        }
+        return view('livewire.movies', ['movies' => $movies]);
     }
 
     public function create()
@@ -82,4 +86,5 @@ class Movies extends Component
         Movie::find($id)->delete();
         session()->flash('message', 'Movie Deleted Successfully.');
     }
+
 }

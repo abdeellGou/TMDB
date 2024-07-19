@@ -46,7 +46,8 @@
     <main class="py-4">
         @yield('content')
     </main>
-    @livewireScripts
+
     <script src="{{ mix('js/app.js') }}"></script>
+    @livewireScripts
 </body>
 </html>
