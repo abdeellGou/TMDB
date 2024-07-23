@@ -8,7 +8,7 @@ use Illuminate\Console\Command;
 
 class FetchTrendingMovies extends Command
 {
-    protected $signature = 'tmdb:fetch';
+    protected $signature = 'tmd²h';
     protected $description = 'Fetch trending movies and store in the database';
 
     protected $tmdbService;

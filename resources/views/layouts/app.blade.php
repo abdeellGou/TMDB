@@ -5,45 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TMDB Movies</title>
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
     @livewireStyles
 </head>
-<body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
-            <a class="navbar-brand" href="{{ url('/') }}">Home</a>
-            <div class="collapse navbar-collapse">
-                <ul class="navbar-nav ml-auto">
+<body class="bg-gray-100">
+    <nav class="bg-white shadow">
+        <div class="container mx-auto px-6 py-3">
+            <div class="flex justify-between items-center">
+                <div>
+                    <a class="text-xl font-bold text-gray-800 hover:text-gray-700" href="{{ url('/') }}">Home</a>
+                </div>
+                <div class="flex items-center space-x-4">
                     @if (Route::has('login'))
                         @auth
-                            <!-- <li class="nav-item">
-                                <a class="nav-link" href="{{ url('/dashboard') }}">Dashboard</a>
-                            </li> -->
-                            <li class="nav-item">
-                                <form method="POST" action="{{ route('logout') }}">
-                                    @csrf
-                                    <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();">Logout</a>
-                                </form>
-                            </li>
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+                                <button type="submit" class="text-gray-800 hover:text-gray-700">Logout</button>
+                            </form>
                         @else
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">Login</a>
-                            </li>
+                            <a class="text-gray-800 hover:text-gray-700" href="{{ route('login') }}">Login</a>
                             @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">Register</a>
-                                </li>
+                                <a class="text-gray-800 hover:text-gray-700" href="{{ route('register') }}">Register</a>
                             @endif
                         @endauth
                     @endif
-                </ul>
+                </div>
             </div>
         </div>
     </nav>
 
-
-
-
-    <main class="py-4">
+    <main class="py-8">
         @yield('content')
     </main>
 

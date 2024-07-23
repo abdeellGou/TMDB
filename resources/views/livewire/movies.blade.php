@@ -1,6 +1,12 @@
 <div class="p-6 bg-gray-100 rounded-lg shadow-lg">
-    <input type="text" wire:model.live="search" placeholder="Search movies..." class="mb-4 w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-
+    <div>
+        <input type="text" wire:model.live="search" placeholder="Search movies..." class="mb-4 w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <!-- <label for="countries" class="mb-4 w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">Select an option</label> -->
+        <!-- <select id="countries" wire:model.live="filter" class="mb-4 w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"">
+            <option selected value="Daily">Daily</option>
+            <option value="Monthly">Monthly</option>
+        </select> -->
+    </div>
     <button wire:click="create()" class="mb-4 bg-blue-500 text-white p-2 rounded-lg hover:bg-blue-600">Create New Movie</button>
 
     @if($isOpen)
@@ -28,7 +34,7 @@
                     <td class="p-2 border-b">{{ Str::limit($movie->description, 100) }}</td>
                     <td class="p-2 border-b">{{ $movie->release_date }}</td>
                     <td class="p-2 border-b">
-                        <a href="{{ route('movies.show', $movie->id) }}" class="bg-red-500 text-white p-2 rounded-lg hover:bg-red-600">Show</a>
+                        <a href="{{ route('movies.show', $movie->id) }}" class="bg-blue-500 text-white p-2 rounded-lg hover:bg-blue-600">Show</a>
                     </td>
                     <td class="p-2 border-b">
                         <button wire:click="edit({{ $movie->id }})" class="bg-yellow-500 text-white p-2 rounded-lg hover:bg-yellow-600">Edit</button>

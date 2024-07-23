@@ -27,16 +27,4 @@ class TMDBService
         return json_decode($response->getBody()->getContents(), true);
     }
 
-    // just test
-    // public function getMovieDetails($movie_id)
-    // {
-    //     $response = $this->client->get("movie/{$movie_id}", [
-    //         'headers' => [
-    //             'Authorization' => 'Bearer ' . env('TMDB_API_KEY'),
-    //         ],
-    //     ]);
-
-    //     return json_decode($response->getBody()->getContents(), true);
-    // }
-
 }

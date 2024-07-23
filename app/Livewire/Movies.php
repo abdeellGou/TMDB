@@ -4,9 +4,12 @@ namespace App\Livewire;
 
 use App\Models\Movie;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class Movies extends Component
 {
+    use WithPagination;
+
     public $movie_id, $mid, $title, $description, $release_date, $isOpen = 0;
     public $search = '';
 
@@ -14,9 +17,9 @@ class Movies extends Component
     {
         $movies = [];
         if (!$this->search) {
-            $movies = Movie::simplePaginate(15);
+            $movies = Movie::simplePaginate(10);
         } else {
-            $movies = Movie::where('title', 'like', '%' . $this->search . '%')->simplePaginate(15);
+            $movies = Movie::where('title', 'like', '%' . $this->search . '%')->simplePaginate(10);
         }
         return view('livewire.movies', ['movies' => $movies]);
     }
